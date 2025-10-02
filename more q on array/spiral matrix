@@ -1,0 +1,61 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int m = matrix.size();
+        int n= matrix[0].size();
+        int left=0,right=n-1;
+        int top=0,bottom=m-1;
+        vector<int>ans;
+
+        while(top<=bottom && left<=right){
+        for(int i=left;i<=right;i++){
+            ans.push_back(matrix[top][i]);
+        }
+        top++;
+        for(int i=top;i<=bottom;i++){
+            ans.push_back(matrix[i][right]);
+        }
+        right--;
+        if(top<=bottom){
+        for(int i=right ;i>=left;i--){
+            ans.push_back(matrix[bottom][i]);
+        }
+        bottom--;}
+        if(left<=right){
+        for(int i=bottom;i>=top;i--){
+            ans.push_back(matrix[i][left]);
+        }
+        left++;
+        }
+
+        }
+        return ans;
+    }
+};
+
+
+
+
+note 
+\Ab if(top <= bottom) kyu?
+
+Jab tum top row traverse kar lete ho (top++ ho jata hai), uske baad bottom row traverse karni hoti hai.
+
+Lekin agar matrix me sirf ek hi row bachi hai, aur tumne already usko traverse kar liya hai, to bottom aur top same ya cross kar sakte hain.
+
+Agar bina if(top <= bottom) ke traverse karoge to same row dobara print ho jayegi → duplicate output aayega.
+
+Example:
+Matrix = [[1,2,3]] (sirf 1 row)
+
+Pehle left→right kar doge, pura row print ho gaya.
+
+Agar if(top <= bottom) check na hota, to bottom row fir se traverse ho jaati.
+
+Ab if(left <= right) kyu?
+
+Jab tum right column traverse kar lete ho (right-- ho jata hai), uske baad left column traverse karni hoti hai.
+
+Lekin agar matrix me sirf ek hi column bacha hai, aur tum already traverse kar chuke ho, to left aur right overlap ho jayenge.
+
+Agar check na lagao to same column dobara traverse ho jayega.
