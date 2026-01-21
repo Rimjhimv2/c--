@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        
+        int l = 0;
+        int r = arr.size();
+       
+        priority_queue<int,vector<int>, greater<int>>p;
+        for(int i = 0; i<k;i++){
+            p.push(arr[i]);
+        }
+        
+        for(int i = k;i<r;i++){
+            if(arr[i]>p.top()){
+                p.pop();
+                p.push(arr[i]);
+            }
+        }
+        return p.top();
+
+
+
+    }
+};
+
+
+//Main Point of This Code
+
+This solution uses a min heap of size k to find the kth largest element efficiently.
+
+💡 Why a Min Heap for kth Largest?
+
+To find the kth largest element:
+
+We want to keep track of the k largest elements seen so far.
+
+Among those k largest, the one we care about is the smallest of them
+→ that is exactly the kth largest overall.
+
+So we use a min heap of size k.
