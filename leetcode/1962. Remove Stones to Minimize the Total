@@ -1,0 +1,61 @@
+class Solution {
+public:
+    int minStoneSum(vector<int>& piles, int k) {
+        int sum = 0; 
+        int n = piles.size();
+        priority_queue<int>pq;
+        for(int i = 0; i<n;i++){
+            pq.push(piles[i]);
+            sum+= piles[i];
+        }
+        for(int i =1 ; i<=k;i++){
+            int maxele= pq.top();
+            pq.pop();
+            int remove = maxele/2;
+            sum -= remove;
+            maxele-= remove;
+            pq.push(maxele);
+
+        }
+        return sum;
+        
+    }
+};
+
+
+
+
+
+/////Saari piles ko max-heap me daal diya
+
+Total stones ka sum nikaal liya
+
+k baar loop:
+
+Sabse badi pile nikali
+
+pile/2 stones remove kiye
+
+Sum se minus kiya
+
+Pile ko update karke wapas heap me daala
+
+End me jo sum bacha → answer
+
+
+explain 
+Put all the piles into a max-heap
+
+Calculate the total sum of all stones
+
+Repeat k times:
+
+Take out the largest pile
+
+Remove floor(pile / 2) stones from it
+
+Subtract the removed stones from the total sum
+
+Update the pile size and push it back into the heap
+
+The remaining total sum is the answer ✅
