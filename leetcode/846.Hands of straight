@@ -1,0 +1,41 @@
+class Solution {
+public:
+    bool isNStraightHand(vector<int>& hand, int groupSize) {
+        // Agar total cards divisible hi nahi hain groupSize se
+        if (hand.size() % groupSize != 0) {
+            return false;
+        }
+
+        // Step 1: Frequency map (sorted order me store hota hai)
+        map<int, int> mp;
+        for (int card : hand) {
+            mp[card]++;
+        }
+
+        // Step 2: Jab tak map empty na ho jaye
+        while (!mp.empty()) {
+            // Sabse chhota card lo (start of group)
+            int curr = mp.begin()->first;
+
+            // Step 3: curr se curr+groupSize-1 tak check karo
+            for (int i = 0; i < groupSize; i++) {
+                int need = curr + i;
+
+                // Agar required card hi nahi mila
+                if (mp.find(need) == mp.end()) {
+                    return false;
+                }
+
+                // Us card ka count kam karo
+                mp[need]--;
+
+                // Agar count 0 ho gaya toh map se hata do
+                if (mp[need] == 0) {
+                    mp.erase(need);
+                }
+            }
+        }
+
+        return true;
+    }
+};
