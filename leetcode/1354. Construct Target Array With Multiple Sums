@@ -1,0 +1,32 @@
+class Solution {
+public:
+    bool isPossible(vector<int>& target) {
+        priority_queue<long long> pq;
+        long long sum = 0;
+
+        for (int x : target) {
+            pq.push(x);
+            sum += x;
+        }
+
+        while (pq.top() != 1) {
+            long long maxEle = pq.top();
+            pq.pop();
+
+            long long remSum = sum - maxEle;
+
+            // invalid cases
+            if (remSum <= 0 || remSum >= maxEle)
+                return false;
+
+            long long element = maxEle % remSum;
+            if (element == 0)
+                element = remSum;
+
+            sum = remSum + element;
+            pq.push(element);
+        }
+
+        return true;
+    }
+};
