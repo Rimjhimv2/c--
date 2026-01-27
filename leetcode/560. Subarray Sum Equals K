@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        
+
+        unordered_map<int,int>m;
+        int prefixSum=0;
+        m[0] = 1;
+
+        int totalSum= 0;
+
+        for(int i =0;i<nums.size();i++){
+            prefixSum+=nums[i];
+
+            if(m.count(prefixSum-k)){
+                totalSum+= m[prefixSum-k];
+                 m[prefixSum]++;
+
+            }
+            else{
+                 m[prefixSum]++;
+            }
+            
+        }
+        return totalSum;
+    }
+};
+
+//nterview-style one-liner
+
+m[prefixSum]++ works for both cases:
+
+if the key exists, it increments its frequency
+
+if the key does not exist, it inserts it with value 1
