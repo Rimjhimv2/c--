@@ -1,0 +1,18 @@
+// Problem: 71. Simplify Path
+// URL: https://leetcode.com/problems/simplify-path/
+// Difficulty: Medium
+// Language: Unknown
+// Date: 2026-03-07
+// Synced by LeetSync Chrome Extension
+
+class Solution {
+public:
+    string simplifyPath(string path) {
+        string token;
+        stringstream ss(path);
+        stack<string> st;
+
+        while(getline(ss, token, '/')) {
+
+            if(token == "" || token == ".
+") {
