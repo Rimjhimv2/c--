@@ -2,7 +2,7 @@
 
 ![Easy](https://img.shields.io/badge/Difficulty-Easy-brightgreen)
 
-**LeetCode Link:** [https://leetcode.com/problems/two-sum/](https://leetcode.com/problems/two-sum/)
+**LeetCode:** [https://leetcode.com/problems/two-sum/](https://leetcode.com/problems/two-sum/)
 **Date Solved:** 2026-03-07
 **Language:** C++
 
