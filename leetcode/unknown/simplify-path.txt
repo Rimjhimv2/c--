@@ -14,5 +14,9 @@ public:
 
         while(getline(ss, token, '/')) {
 
-            if(token == "" || token == ".
-") {
+            if(token == "" || token == ".") {
+                continue;
+            }
+            else if(token == "..") {
+                if(!st.empty()) {
+                    st.pop();
